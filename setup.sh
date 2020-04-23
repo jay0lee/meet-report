@@ -19,5 +19,6 @@ $GAM oauth create $ADMINUSER $SCOPES
 
 cp $MEETREPORT/config.py.example $MEETREPORT/config.py
 
+gcloud app create
 gcloud app deploy $MEETREPORT --quiet
 gcloud app deploy $MEETREPORT/cron.yaml --quiet
