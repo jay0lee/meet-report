@@ -13,7 +13,17 @@ CLIENTSECRETS=$MEETREPORT/client_secrets.json
 read -p "Enter your admin email address: " ADMINUSER
 
 cp $MEETREPORT/project-apis.txt $GAMPATH
-$GAM use project $ADMINUSER $GOOGLE_CLOUD_PROJECT
+
+BUILDURL="https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com?project=$GOOGLE_CLOUD_PROJECT"
+until $GAM use project $ADMINUSER $GOOGLE_CLOUD_PROJECT; do
+  echo "Please go to:"
+  echo ""
+  echo "$BUILDURL"
+  echo ""
+  echo "and enable the Cloud Build API. Note that you'll need to setup Billing to do so."
+  echo ""
+  read -p "Press enter when done." done
+done
 
 SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly
 ,email"
