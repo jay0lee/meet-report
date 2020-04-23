@@ -1,0 +1,6 @@
+admin.googleapis.com
+build.googleapis.com
+calendar-json.googleapis.com
+datastore.googleapis.com
+gmail.googleapis.com
+

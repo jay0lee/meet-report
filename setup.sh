@@ -4,13 +4,15 @@ git clone https://github.com/jay0lee/meet-report.git
 # Install GAM wihthout setup, we'll use it to setup project and authorize
 bash <(curl -s -S -L https://git.io/install-gam) -l
 
-GAM=~/bin/gam/gam
+GAMPATH=~/bin/gam/
+GAM=$GAMPATH/gam
 MEETREPORT=~/meet-report/
 OAUTHFILE=$MEETREPORT/oauth2.txt
 CLIENTSECRETS=$MEETREPORT/client_secrets.json
 
 read -p "Enter your admin email address: " ADMINUSER
 
+cp $MEETREPORT/project-apis.txt $GAMPATH
 $GAM use project $ADMINUSER $GOOGLE_CLOUD_PROJECT
 
 SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly
