@@ -15,7 +15,7 @@ $GAM use project $ADMINUSER $GOOGLE_CLOUD_PROJECT
 
 SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly
 ,email"
-$GAM create oauth $ADMINUSER $SCOPES
+$GAM oauth create $ADMINUSER $SCOPES
 
 cp $MEETREPORT/config.py.example $MEETREPORT/config.py
 
