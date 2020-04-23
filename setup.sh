@@ -9,9 +9,9 @@ MEETREPORT=~/meet-report/
 OAUTHFILE=$MEETREPORT/oauth2.txt
 CLIENTSECRETS=$MEETREPORT/client_secrets.json
 
-$GAM use project $GOOGLE_CLOUD_PROJECT
-
 read -p "Enter your admin email address: " ADMINUSER
+
+$GAM use project $ADMINUSER $GOOGLE_CLOUD_PROJECT
 
 SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly
 ,email"
