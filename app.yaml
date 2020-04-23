@@ -1,0 +1,14 @@
+runtime: python37
+
+handlers:
+- url: /send-reports
+  secure: always
+  script: auto
+
+- url: /cleanup
+  secure: always
+  script: auto
+
+- url: /
+  secure: always
+  script: auto

@@ -1,0 +1,9 @@
+cron:
+- description: "regular db cleanup"
+  url: /cleanup
+  schedule: every 24 hours
+
+- description: "send reports"
+  url: /send-reports
+  schedule: every 30 minutes
+

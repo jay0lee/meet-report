@@ -1,0 +1,45 @@
+# Ignore meetings shorter than this
+MINIMUM_MEETING_DURATION_SECONDS = 60
+
+# Ignore meetings with less attendees (organizer + participants) than this
+MINIMUM_MEETING_ATTENDEES = 2 
+
+# Don't retrieve end call events newer than this. This delay helps to ensure
+# we don't prematurely process meetings still taking place.
+MINIMUM_AGE_MINUTES = 30
+
+# Wait to process meetings if one attendee has left more recently than this.
+# This delay helps to ensure we don't prematurely process meetings still
+# taking place.
+DEFER_IF_EVENT_SOONER_THAN_MINUTES = 60
+
+# Timezone used for dates and times
+TIMEZONE = 'US/Eastern'
+
+# Whether to show attendee IP in reports
+SHOW_IP = False
+
+# Whether to show attendee location (city, country) in reports
+SHOW_LOCATION = False
+
+# Whether to show attendee device type (web, android, ios, phone, etc)
+SHOW_DEVICE_TYPE = True
+
+# Email subject for meetings associated to Google Calendar events
+# {event_summary} is replaced with title of Calendar event
+# {meeting_code} is replaced with the meeting code
+SUBJECT_FOR_CALENDAR_MEETINGS = '[meet-report] {event_summary}'
+
+# Email subject for meetings not associated to Google Calendar
+# {meeting_code} is replaced with the meeting code
+SUBJECT_FOR_MEETINGS = '[meet-report] {meeting_code}'
+
+# BCC this address on all messages. Leave blank for no BCC.
+BCC_ADDRESS = ''
+
+# Send email notice to meeting organizer
+TO_ORGANIZER = True
+
+# Send email notice to meeting attendees who have emails, no guests or phones)
+TO_ATTENDEES = False
+
