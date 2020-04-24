@@ -1,5 +1,8 @@
 # Clone meet-report
 git clone https://github.com/jay0lee/meet-report.git
+cd meet-report
+git pull
+cd ~
 
 # Install GAM wihthout setup, we'll use it to setup project and authorize
 bash <(curl -s -S -L https://git.io/install-gam) -l
@@ -27,7 +30,7 @@ done
 
 SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly
 ,email"
-$GAM oauth create $ADMINUSER $SCOPES
+$GAM oauth create admin $ADMINUSER scopes $SCOPES
 
 cp $MEETREPORT/config.py.example $MEETREPORT/config.py
 
