@@ -52,14 +52,14 @@ def local_time(udt):
 def draw_meetings(gmail, meetings):
   for meet in meetings.values():
     output = '<html><body>'
-    output += 'Here\'s some details about your recent Google Meeting:<br><br>'
+    output += 'Here\'s some details about your recent Google Meet call:<br><br>'
     if meet.get('calendar_event'):
       summary = meet["calendar_event"].get("summary", "<No title>")
       htmlLink = meet["calendar_event"].get("htmlLink", "")
       output += f'Calendar Event: <a href="{htmlLink}">{summary}</a><br>'
     output += f'Meeting code: <a href="https://meet.google.com/{meet["meeting_code"]}">{meet["meeting_code"]}</a><br>'
     output += f'Time: {local_time(meet["start_time"])} - {local_time(meet["end_time"])} {TIMEZONE}<br>'
-    output += 'Attendees:<br><ul>'
+    output += f'{len(meet["attendees"])} attendees:<br><ul>'
     rcpts = []
     if TO_ORGANIZER:
       rcpts.append(meet['organizer_email'])
@@ -91,12 +91,17 @@ def draw_meetings(gmail, meetings):
           meeting_code=meet['meeting_code'])
     else:
       subject = SUBJECT_FOR_MEETINGS.format(meeting_code=meet['meeting_code'])
-    send_email(gmail, rcpts, subject, output)
+    ref_domain = os.environ.get('GAE_APPLICATION', 'unknown-meet-report-instance.appspot.com')
+    if ref_domain.find('~') != -1:
+      ref_domain = ref_domain.split('~')[1]
+      ref_domain += '.appspot.com'
+    references = f'<{meet["meeting_code"]}@{ref_domain}>'
+    send_email(gmail, rcpts, subject, output, references)
     timestamp = datetime.datetime.utcnow()
     for id in endpoint_ids:
       store_endpoint_id(id, timestamp)
 
-def send_email(gmail, rcpts, subject, body):
+def send_email(gmail, rcpts, subject, body, references=None):
   msg = MIMEMultipart("alternative")
   msg.attach(MIMEText(body, 'html'))
   msg['Subject'] = subject
@@ -104,6 +109,8 @@ def send_email(gmail, rcpts, subject, body):
     msg['To'] = ', '.join(rcpts)
   if BCC_ADDRESS:
     msg['Bcc'] = BCC_ADDRESS
+  if references:
+    msg['References'] = references
   encoded_email = urlsafe_b64encode(msg.as_bytes()).decode()
   api_body = {'raw': encoded_email}
   gmail.users().messages().send(userId='me', body=api_body).execute()  
