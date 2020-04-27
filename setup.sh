@@ -28,8 +28,7 @@ until $GAM use project $ADMINUSER $GOOGLE_CLOUD_PROJECT; do
   read -p "Press enter when done." done
 done
 
-SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly
-,email"
+SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly,email"
 $GAM oauth create admin $ADMINUSER scopes $SCOPES
 
 cp $MEETREPORT/config.py.example $MEETREPORT/config.py
