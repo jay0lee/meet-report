@@ -10,8 +10,6 @@ bash <(curl -s -S -L https://git.io/install-gam) -l
 GAMPATH=~/bin/gam/
 GAM=$GAMPATH/gam
 MEETREPORT=~/meet-report/
-OAUTHFILE=$MEETREPORT/oauth2.txt
-CLIENTSECRETS=$MEETREPORT/client_secrets.json
 
 read -p "Enter your admin email address: " ADMINUSER
 
@@ -30,6 +28,7 @@ done
 
 SCOPES="https://www.googleapis.com/auth/gmail.send,https://www.googleapis.com/auth/admin.reports.audit.readonly,https://www.googleapis.com/auth/calendar.events.readonly,email"
 $GAM oauth create admin $ADMINUSER scopes $SCOPES
+cp $GAMPATH/oauth2.txt $MEETREPORT
 
 cp $MEETREPORT/config.py.example $MEETREPORT/config.py
 
