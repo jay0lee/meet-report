@@ -26,6 +26,9 @@ SHOW_LOCATION = False
 SHOW_DEVICE_TYPE = True
 
 # Name and address the reports are from
+# Note that your admin user needs to be able to send from this address
+# or Gmail will rewrite the from to your admin user's primary
+# https://support.google.com/mail/answer/22370?hl=en
 FROM_HEADER = '"Meet Reports" <meet-reports@yourdomain.com>'
 
 # Email subject for meetings associated to Google Calendar events
