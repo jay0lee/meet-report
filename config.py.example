@@ -13,7 +13,11 @@ MINIMUM_AGE_MINUTES = 30
 # taking place.
 DEFER_IF_EVENT_SOONER_THAN_MINUTES = 60
 
-# Timezone used for dates and times
+# Timezone used for report dates / times
+# To see list of possible values, run:
+#
+# ~/meet-report/list-timezones.sh
+#
 TIMEZONE = 'US/Eastern'
 
 # Whether to show attendee IP in reports
