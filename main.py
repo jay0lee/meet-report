@@ -105,6 +105,7 @@ def send_email(gmail, rcpts, subject, body, references=None):
   msg = MIMEMultipart("alternative")
   msg.attach(MIMEText(body, 'html'))
   msg['Subject'] = subject
+  msg['From'] = FROM_HEADER
   if rcpts:
     msg['To'] = ', '.join(rcpts)
   if BCC_ADDRESS:

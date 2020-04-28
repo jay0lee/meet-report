@@ -25,6 +25,9 @@ SHOW_LOCATION = False
 # Whether to show attendee device type (web, android, ios, phone, etc)
 SHOW_DEVICE_TYPE = True
 
+# Name and address the reports are from
+FROM_HEADER = '"Meet Reports" <meet-reports@yourdomain.com>'
+
 # Email subject for meetings associated to Google Calendar events
 # {event_summary} is replaced with title of Calendar event
 # {meeting_code} is replaced with the meeting code
