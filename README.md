@@ -1,5 +1,5 @@
 # Meet Report
-Meet Report is a [Google AppEngine](https://cloud.google.com/appengine) app that runs entirely in the Cloud and sends email reports to organizers and/or attendees of [Google Meet](https://gsuite.google.com/products/meet/) meetings. The report shows who attendeded the meeting, the time(s) they attended, how they joined (web browser, app, phone, etc) and optionally their IP address and geo location (these are reported for members of your G Suite domain only).
+Meet Report is a [Google AppEngine](https://cloud.google.com/appengine) app that runs entirely in the Cloud and sends email reports to organizers and/or attendees of [Google Meet](https://gsuite.google.com/products/meet/) meetings. The report shows who attended, the time(s) they attended, how they joined (web browser, app, phone, etc) and optionally their IP address and geo location (these are reported for members of your G Suite domain only).
 
 Here's a sample report:
 
