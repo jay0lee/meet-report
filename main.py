@@ -178,6 +178,9 @@ def parse_report(report, cal, ignore_endpoint_ids=[]):
         continue
       if not identifier: # anonymous web user
         identifier = left_event.get('display_name', 'No Name Set')
+      if not left_event.get('duration_seconds'): # unset or 0
+        left_event['duration_seconds'] = 0
+        left_event['joined_time'] = left_event['left_time']
       if conference_id in meetings:
         if meeting_code and not meetings[conference_id]['meeting_code']:
           meetings[conference_id]['meeting_code'] = meeting_code
