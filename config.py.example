@@ -53,3 +53,8 @@ TO_ORGANIZER = True
 # Send email notice to meeting attendees who have emails, no guests or phones)
 TO_ATTENDEES = False
 
+# Some meetings created externally will have a blank organizer. In this case
+# for reporting purposes we assume this address is the organizer. Leave blank
+# to ignore exterally created meetings.
+REPLACE_BLANK_ORGANIZER_WITH = 'jay0lee@gmail.com'
+

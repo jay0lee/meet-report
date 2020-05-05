@@ -220,8 +220,11 @@ def parse_report(report, cal, ignore_endpoint_ids=[]):
       print(f'skipping meeting with only {len(val["attendees"])}')
       continue 
     if not val['organizer_email']:
-      print('skipping meeting with no organizer')
-      continue
+      if REPLACE_BLANK_ORGANIZER_WITH:
+        val['organizer_email'] = REPLACE_BLANK_ORGANIZER_WITH
+      else:
+        print('skipping meeting with no organizer')
+        continue
     if 'calendar_event_id' in val:
       val['calendar_event'] = get_event(val['organizer_email'], val['calendar_event_id'], cal)
     organized_meetings[meeting] = val
